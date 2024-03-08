@@ -18,3 +18,12 @@ resource "azurerm_subnet" "this" {
   virtual_network_name = azurerm_virtual_network.this.name
   address_prefixes     = each.value.address_prefixes
 }
+
+resource "azurerm_storage_account" "this" {
+  name                     = "sttest001"
+  resource_group_name      = azurerm_resource_group.this["rg1"].name
+  location                 = azurerm_resource_group.this["rg1"].location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  access_tier              = "Cool"
+}
