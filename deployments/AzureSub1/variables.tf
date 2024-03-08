@@ -4,3 +4,10 @@ variable "resource_groups" {
     location = string
   }))
 }
+
+variable "subnets" {
+  type = map(object({
+    name             = string
+    address_prefixes = list(string)
+  }))
+}
